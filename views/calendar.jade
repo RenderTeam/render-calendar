@@ -1,0 +1,30 @@
+.container.text-center#bigContainer
+  .span12
+    .span4.pull-right#calendarContainer
+      .span4.day-preview
+        .span4.day-preview-header
+          .span3.text-right.month
+            h1  Junio
+          .span1.pull-right.year
+            h4  2013
+        .span4.day
+          hr.invisible
+          hr.invisible
+          h1  8
+      .span4.full-month
+        .span1.pull-left 
+          h2  <
+        .span2 
+          h2  Junio
+        .span1.pull-right 
+          h2  >
+        span.breaker
+        .calendar-row-days
+          .cell-header  LU
+          .cell-header  MA
+          .cell-header  MI
+          .cell-header  JU
+          .cell-header  VI
+          .cell-header  SA
+          .cell-header  DO
+        include calendar-row

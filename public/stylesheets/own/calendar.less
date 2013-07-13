@@ -1,0 +1,73 @@
+#bigContainer div{
+  margin: 0;
+}
+
+#calendarContainer{
+  .day-preview{
+    min-height: 260px;
+
+    .day-preview-header{
+      background-color: orange;
+    }
+
+    .day{
+      vertical-align: middle;
+      
+      h1{
+        font-size: 10em;
+      }
+    }
+
+    .month{
+    }
+
+    .year{
+      background-color: white;
+      border:3px solid #2C77B8;
+      border-right: 0;
+      border-top: 0;
+      border-radius: 0 0 0 30px ;
+    }
+  }
+
+  .full-month{
+    min-height: 260px;
+
+    .calendar-row-days{
+      .cell-header{
+        background-color: white;
+        -webkit-box-shadow: 0px 0px 20px rgba(50, 50, 50, 0.75);
+        -moz-box-shadow:    0px 0px 20px rgba(50, 50, 50, 0.75);
+        box-shadow:         0px 0px 20px rgba(50, 50, 50, 0.75);        
+        float: left;
+        width: 14.28%;
+      }
+    }
+
+    .calendar-row{
+
+    }
+
+    .calendar-cell{
+        background-color: white;
+        box-shadow:         0px 0px 8px rgba(50, 50, 50, 0.75); 
+        -webkit-box-shadow: 0px 0px 8px rgba(50, 50, 50, 0.75);
+        -moz-box-shadow:    0px 0px 8px rgba(50, 50, 50, 0.75);
+        float: left;
+        min-height: 30px;
+        width: 14.28%;        
+      }
+
+    .span2{
+      min-width: 230px;
+    }    
+  }
+}
+
+.breaker{
+  clear:both;
+}
+
+.invisible{
+  opacity: 0;
+}
