@@ -1,30 +1,35 @@
-.container.text-center#bigContainer
+.container.text-center.bigCalendarContainer
   .span12
-    .span4.pull-right#calendarContainer
+    .span8
+      .hero-unit
+        h1  Render Calendar 
+          b ROCKS!
+    .span4.pull-right.calendarContainer
       .span4.day-preview
         .span4.day-preview-header
-          .span3.text-right.month
-            h1  Junio
-          .span1.pull-right.year
-            h4  2013
+          h1.month  Junio
+          h4.year 2013
         .span4.day
           hr.invisible
           hr.invisible
-          h1  8
+          h1  10
       .span4.full-month
-        .span1.pull-left 
-          h2  <
-        .span2 
-          h2  Junio
-        .span1.pull-right 
-          h2  >
-        span.breaker
-        .calendar-row-days
-          .cell-header  LU
-          .cell-header  MA
-          .cell-header  MI
-          .cell-header  JU
-          .cell-header  VI
-          .cell-header  SA
-          .cell-header  DO
+        .full-month-header-container
+          .span1.pull-left.arrow.arrow-left
+            h2  <
+          .span2 
+            h2  Junio
+          .span1.pull-right.arrow.arrow-right
+            h2  >
+          p.breaker.invisible |
+          .calendar-row-days
+            .cell-header  LU
+            .cell-header  MA
+            .cell-header  MI
+            .cell-header  JU
+            .cell-header  VI
+            .cell-header  SA
+            .cell-header  DO
+            p.breaker.invisible |
+          p.breaker.invisible |
         include calendar-row
