@@ -1,26 +1,96 @@
+var calendarLabels = {
+  "dayLabels": [     
+    {"dayLabel":  "Do"},
+    {"dayLabel":  "Lu"},
+    {"dayLabel":  "Ma"}, 
+    {"dayLabel":  "Mi"},
+    {"dayLabel":  "Ju"},
+    {"dayLabel":  "Vi"},
+    {"dayLabel":  "Sa"}    
+  ],
+  "monthLabels": [    
+    {"monthLabel": "Enero"},
+    {"monthLabel": "Febrero"},
+    {"monthLabel": "Marzo"},
+    {"monthLabel": "Abril"},
+    {"monthLabel": "Mayo"},
+    {"monthLabel": "Junio"},
+    {"monthLabel": "Julio"},
+    {"monthLabel": "Agosto"},
+    {"monthLabel": "Septiembre"},
+    {"monthLabel": "Octubre"},
+    {"monthLabel": "Noviembre"},
+    {"monthLabel": "Diciembre"}    
+  ]
+}
 
-YUI().use('calendar', 'datatype-date', 'cssbutton',  function(Y) {             
-    var calendar = new Y.Calendar({
-      contentBox: "#mycalendar",
-      width:'340px',
-      showPrevMonth: true,
-      showNextMonth: true,
-      date: new Date()}).render();    
-    var dtdate = Y.DataType.Date; 
+function getStringDayNumberToDayLabel(dayNumber){
+  //dayNumber has values from 0-6 
+  return calendarLabels.dayLabels[dayNumber].dayLabel;
+}
 
+function getStringMonthNumberToMonthLabel(monthNumber){
+  // monthNumber has values from 0-11
+  return calendarLabels.monthLabels[monthNumber].monthLabel;
+}
+
+function getDayofTheWeekOfFirstDayOfTheMonth(month){
+  //The month is a Date object
+
+  var dayOfTheWeek = new Date();
+
+  dayOfTheWeek.setMonth(month.getMonth() + 1);
+  dayOfTheWeek.setDate(1);
+
+  dayOfTheWeek = dayOfTheWeek.getDay();
+
+   return dayOfTheWeek;
+}
+
+function getMonthSize(month){
+  //The month is a Date object
+
+  var  monthSize = new Date();
+
+  monthSize.setMonth(month.getMonth() + 1);
+  monthSize.setDate(0);
+  monthSize = monthSize.getDate();
+
+  return monthSize;
+}
+
+function createMonth(month){
+  //month is a Date object
+  var firstDayOfTheMonthNumber,
+      monthSize ,
+      temporalMonth,
+      previousMonthSize,
+      row = 0,
+      column = 0;
+
+  temporalMonth =  month;
+
+  monthSize = getMonthSize(month);
+  temporalMonth.setMonth(month.getMonth() - 1);
+  previousMonthSize = getMonthSize(temporalMonth);
+  firstDayOfTheMonthNumber = getDayofTheWeekOfFirstDayOfTheMonth(month);
+
+  $('.full-month-header-container').find('.span2').find('h2').text(getStringMonthNumberToMonthLabel(month.getMonth() + 1));
+
+  for (var i = 0; i < 7; i++) {
+    $('.calendar-row-days').find('.activeHeader').text(getStringDayNumberToDayLabel(i));
+    $('.calendar-row-days').find('.activeHeader').next().addClass('activeHeader');
+    $('.calendar-row-days').find('.activeHeader:first').removeClass('activeHeader');
+  };
+
+  for(var i = 0;i < 7;i++){
     
-    // calendar.cfg.setProperty("MONTHS_SHORT",   ["Ene", "Feb", "Mar", "Abr", "Mayo", "Jun", "Jul", "Ago", "Sep", "Oct", "Nov", "Dic"]);
-    // calendar.cfg.setProperty("MONTHS_LONG",    ["Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto", "Septiembre", "Octubre", "Noviembre", "Diciembre"]);
-    // calendar.cfg.setProperty("WEEKDAYS_1CHAR", ["D", "L", "Ma", "Mi", "J", "V", "S"]);
-    // calendar.cfg.setProperty("WEEKDAYS_SHORT", ["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"]);
-    // calendar.cfg.setProperty("WEEKDAYS_MEDIUM",["Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"]);
-    // calendar.cfg.setProperty("WEEKDAYS_LONG",  ["Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sábado"]);
-    
+  }
+}
 
-        
-    calendar.on("selectionChange", function (ev) {     
-      var newDate = ev.newSelection[0];
-      Y.one("#selecteddate").setHTML(dtdate.format(newDate));
-    });
+function start(){
+  var month = new Date();
+  createMonth(month)
+}
 
-});
+$(document).on('ready', start);

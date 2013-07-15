@@ -18,18 +18,23 @@
           .span1.pull-left.arrow.arrow-left
             h2  <
           .span2 
-            h2  Junio
+            h2
           .span1.pull-right.arrow.arrow-right
             h2  >
           p.breaker.invisible |
           .calendar-row-days
-            .cell-header  LU
-            .cell-header  MA
-            .cell-header  MI
-            .cell-header  JU
-            .cell-header  VI
-            .cell-header  SA
-            .cell-header  DO
+            .cell-header.activeHeader
+            .cell-header
+            .cell-header
+            .cell-header
+            .cell-header
+            .cell-header
+            .cell-header
             p.breaker.invisible |
           p.breaker.invisible |
-        include calendar-row
+        - for(var i=0; i<6; i++)
+          - for(var j=0; j<7; j++)
+            -if(i == 0 && j == 0)
+              .activeCell.calendar-cell(class='c'+i+ ''+j ) 1
+            else
+              .calendar-cell(class='c'+i+ ''+j ) 1
