@@ -188,6 +188,7 @@ function start(){
   $('.' + todayDate).addClass('selectedCell');
 
   $('.arrow-left').on('click', arrowClickChangeMonth);
+  $('.arrow-right').on('click', arrowClickChangeMonth);
   $('.calendar-cell').on('click', onPressShowDayAndMonth);
 }
 
