@@ -15,6 +15,7 @@
 @fullMonthDayHeaderFontColor:         #EC6C08;
 @fullMonthDayNumberColor:             none;
 @fullMonthDayCellShadowColor:         #323034;
+@fullMonthSelectedCell:               orange;    
 
 .bigCalendarContainer div{
   margin: 0;
@@ -75,7 +76,12 @@
           float: left;
           width: 14.28%;
         }
-      }      
+      }
+
+      .yearPreview{
+        font-weight: normal;
+        color: @dayPreviewYearFontColor;
+      }     
     }
 
     .calendar-cell{
@@ -90,8 +96,16 @@
       width: 14.28%;        
     }
 
+    .calendar-cell:hover{
+      cursor: pointer;
+    }
+
     .notThisMonth{
       opacity: .4;
+    }
+
+    .selectedCell{
+      color: @fullMonthSelectedCell;
     }
 
     .span2{
@@ -113,3 +127,5 @@
 b{
   color:orange;
 }
+
+
