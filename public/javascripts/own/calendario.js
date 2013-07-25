@@ -40,6 +40,7 @@ function createMonth(month){
 
   $('.notThisMonth').removeClass('notThisMonth');
   $('.nextMonth').removeClass('nextMonth');
+  $('.thisMonth').removeClass('thisMonth');
   $('.previousMonth').removeClass('previousMonth');
   $('.selectedCell').removeClass('selectedCell');
   
@@ -50,7 +51,7 @@ function createMonth(month){
   previousMonthSize = getMonthSize(temporalPreviousMonth);
   firstDayOfTheMonthNumber = getDayofTheWeekOfFirstDayOfTheMonth(month);
 
-  $('.full-month-header-container').find('.span2').find('h2').text(getStringMonthNumberToMonthLabel(monthNumber));
+  $('.full-month-header-container').find('.span2').find('h2').text(monthNumberToMonthLabel(monthNumber));
   $('.full-month-header-container').find('.yearPreview').text(month.getFullYear());
 
   $('.full-month-header-container').find('.arrow-left').attr({
@@ -64,14 +65,14 @@ function createMonth(month){
   });
 
   for (i = 0; i < 7; i++) {
-    $('.calendar-row-days').find('.activeHeader').text(getStringDayNumberToDayLabel(i));
+    $('.calendar-row-days').find('.activeHeader').text(dayNumberToDayLabel(i));
     $('.calendar-row-days').find('.activeHeader').next().addClass('activeHeader');
     $('.calendar-row-days').find('.activeHeader:first').removeClass('activeHeader');
   };
 
   temporalDayNumber = previousMonthSize - firstDayOfTheMonthNumber + 1;
 
-  for(i = previousMonthSize; i > (previousMonthSize - firstDayOfTheMonthNumber); i--){
+  for(i = previousMonthSize, loopTimes = previousMonthSize - firstDayOfTheMonthNumber; i > loopTimes; i--){
     $('.activeCell').removeClass($('.activeCell').attr('date'));
     $('.activeCell').addClass('notThisMonth');
     $('.activeCell').addClass('previousMonth');    
@@ -99,7 +100,7 @@ function createMonth(month){
     remainingCellsCounter++;
   }
 
-  for(i = 1;i <= (42 - remainingCellsCounter);i++){
+  for(i = 1, loopTimes = (42 - remainingCellsCounter);i <= loopTimes;i++){
     $('.activeCell').removeClass($('.activeCell').attr('date'));
     $('.activeCell').addClass('notThisMonth');
     $('.activeCell').addClass('nextMonth');
@@ -114,12 +115,12 @@ function createMonth(month){
   $('.full-month-header-container').next().addClass('activeCell');
 }
 
-function getStringDayNumberToDayLabel(dayNumber){
+function dayNumberToDayLabel(dayNumber){
   //dayNumber has values from 0-6 
   return calendarLabels.dayLabels[dayNumber].dayLabel;
 }
 
-function getStringMonthNumberToMonthLabel(monthNumber){
+function monthNumberToMonthLabel(monthNumber){
   // monthNumber has values from 0-11
   return calendarLabels.monthLabels[monthNumber].monthLabel;
 }
@@ -130,7 +131,6 @@ function getDayofTheWeekOfFirstDayOfTheMonth(month){
   var dayOfTheWeek = new Date(month.getFullYear(),month.getMonth());
 
   dayOfTheWeek.setDate(1);
-
   dayOfTheWeek = dayOfTheWeek.getDay();
 
   return dayOfTheWeek;
@@ -178,7 +178,7 @@ function arrowClickChangeMonth(){
 }
 
 function start(){
-  var month = new Date();
+  var month = new Date(),
       todayDate = 'd' + month.getDate() + '-m' + (month.getMonth() + 1) + '-y' + month.getFullYear();
   createMonth(month);
 
