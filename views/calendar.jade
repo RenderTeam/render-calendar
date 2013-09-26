@@ -1,28 +1,24 @@
 .container.text-center.bigCalendarContainer
-  .span12
-    .span8
-      .hero-unit
-        h1  Render Calendar 
-          b ROCKS!
-    .span4.pull-right.calendarContainer
-      .span4.day-preview
-        .span4.day-preview-header
-          h1.month  
-          h4.year 
-        .span4.day
-          hr.invisible
-          hr.invisible
-          h1  
-      .span4.full-month
+  .col-md-12
+    .col-md-8
+      h1  Render Calendar
+        b ROCKS!
+    .col-md-4.pull-right.calendarContainer
+      .col-md-12.day-preview
+        .col-md-12.day-preview-header
+          h1.month
+          h4.year
+        .col-md-12.day
+          h1
+      .col-md-12.full-month
         .full-month-header-container
-          .span1.pull-left.arrow.arrow-left
+          .pull-left.arrow.arrow-left
             h2  <
-          .span2 
-            h2
-          .span1.pull-right.arrow.arrow-right
+          .pull-right.arrow.arrow-right
             h2  >
+          .between-arrows 
+            h2
           p.yearPreview
-          p.breaker.invisible |
           .calendar-row-days
             .cell-header.activeHeader
             .cell-header
@@ -31,8 +27,6 @@
             .cell-header
             .cell-header
             .cell-header
-            p.breaker.invisible |
-          p.breaker.invisible |
         - for(var i=0; i<6; i++)
           - for(var j=0; j<7; j++)
             -if(i == 0 && j == 0)

@@ -6,9 +6,9 @@ var calendarLabels = {
     {"dayLabel":  "Mi"},
     {"dayLabel":  "Ju"},
     {"dayLabel":  "Vi"},
-    {"dayLabel":  "Sa"}    
+    {"dayLabel":  "Sa"}
   ],
-  "monthLabels": [    
+  "monthLabels": [
     {"monthLabel": "Enero"},
     {"monthLabel": "Febrero"},
     {"monthLabel": "Marzo"},
@@ -51,7 +51,7 @@ function createMonth(month){
   previousMonthSize = getMonthSize(temporalPreviousMonth);
   firstDayOfTheMonthNumber = getDayofTheWeekOfFirstDayOfTheMonth(month);
 
-  $('.full-month-header-container').find('.span2').find('h2').text(monthNumberToMonthLabel(monthNumber));
+  $('.full-month-header-container').find('.between-arrows').find('h2').text(monthNumberToMonthLabel(monthNumber));
   $('.full-month-header-container').find('.yearPreview').text(month.getFullYear());
 
   $('.full-month-header-container').find('.arrow-left').attr({
@@ -168,7 +168,7 @@ function onPressShowDayAndMonth(){
       $(this).addClass('selectedCell');
   }
 
-  $('.day-preview-header').find('.month').text($('.full-month-header-container').find('.span2').find('h2').text());
+  $('.day-preview-header').find('.month').text($('.full-month-header-container').find('.between-arrows').find('h2').text());
   $('.day-preview-header').find('.year').text($('.full-month-header-container').find('.yearPreview').text());
 }
 
@@ -183,7 +183,7 @@ function start(){
   createMonth(month);
 
   $('.day-preview').find('.day').find('h1').text(month.getDate());
-  $('.day-preview-header').find('.month').text($('.full-month-header-container').find('.span2').find('h2').text());
+  $('.day-preview-header').find('.month').text($('.full-month-header-container').find('.between-arrows').find('h2').text());
   $('.day-preview-header').find('.year').text($('.full-month-header-container').find('.yearPreview').text());
   $('.' + todayDate).addClass('selectedCell');
 
